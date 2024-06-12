@@ -43,7 +43,12 @@ export class Operation {
     this.path = this.path.replace(/\'/g, '\\\'');
     this.tags = spec.tags || [];
     this.pathVar = `${upperFirst(id)}Path`;
-    this.methodName = spec['x-operation-name'] || this.id;
+
+    if(spec['x-operation-name'] && spec['x-operation-name'].value){
+      this.methodName = spec['x-operation-name'].value;
+    }else{
+      this.methodName = spec['x-operation-name'] || this.id;
+    }
 
     // Add both the common and specific parameters
     const allParams = [

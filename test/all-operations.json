@@ -355,7 +355,9 @@
     },
     "/path'with'quotes": {
       "get": {
-        "x-operation-name": "withQuotes",
+        "x-operation-name": {
+          "value": "withQuotes"
+        },
         "responses": {
           "200": {
             "content": {
